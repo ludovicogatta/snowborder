@@ -1,9 +1,15 @@
 
 #include<fstream>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
+struct snow{
+    int matricola;
+    string nome;
+    int x,y,x1,y1;
+};
 void stampaf()
 {
     
@@ -17,8 +23,34 @@ void stampaf()
     fin.close();
 
 }
+
+    void caricamentoVet(snow vet[])
+{
+      int risultato;
+      ifstream fin("auto.txt",ios::in);
+      string app;
+    while(!fin.eof())
+    {
+     
+        for(int i=0;i<5;i++)
+        {
+            fin>>vet[i].matricola>>vet[i].nome>>vet[i].x>>vet[i].y>>vet[i].x1>>vet[i].y1;
+            risultato=sqrt(pow(vet[i].x1 - vet[i].x, 2)+pow(vet[i].y1 -vet[i].y, 2));
+            
+            
+        
+    }
+    fin.close();
+    
+}
+}
+
+
+
 int main()
 {
+    snow vet[5];
+    
     int scelta;
 
     do
