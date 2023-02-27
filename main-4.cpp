@@ -1,3 +1,4 @@
+
 #include<fstream>
 #include <iostream>
 #include <cmath>
@@ -26,11 +27,11 @@ void stampaf()
 
     void caricamentoVet(snow vet[])
 {
-      int x1,y1;
+      int x1=0,y1=0;
       int d=0;
       int risultato;
-      ifstream fin("auto.txt",ios::in);
-      string app;
+      ifstream fin("miofile.txt",ios::in);
+      
     while(!fin.eof())
     {
      
@@ -41,6 +42,8 @@ void stampaf()
             {
                 fin>>vet[i].x[j]>>vet[i].y[j];
                 risultato=sqrt(pow(x1 - vet[i].x[j], 2)+pow(y1 -vet[i].y[j], 2));
+                x1=vet[i].x[j];
+                y1=vet[i].y[j];
                 d=d+risultato;
             }
             vet[i].distanza=d;
@@ -58,12 +61,33 @@ void stampaf()
     
 }
 
+void ordinamento(snow vet[],pod[])
+{
+    for(int j=0;j<3;j++)
+    {
+        for(int i=0;i<5;i++)
+        {
+            if(vet[i].distanza>pod[j].distanza)
+            {
+                pod[j]=vet[i];
+            }
+        }
+    }
+    
+    for(int i=0;i<3;i++)
+    {
+        cout<<pod[i];
+    }
+    
+}
+
 
 
 
 int main()
 {
     snow vet[5];
+    snow pod[5];
     
     int scelta;
 
