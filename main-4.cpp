@@ -1,4 +1,3 @@
-
 #include<fstream>
 #include <iostream>
 #include <cmath>
@@ -8,7 +7,8 @@ using namespace std;
 struct snow{
     int matricola;
     string nome;
-    int x,y,x1,y1;
+    int x[30],y[30];
+    int distanza;
 };
 void stampaf()
 {
@@ -26,6 +26,8 @@ void stampaf()
 
     void caricamentoVet(snow vet[])
 {
+      int x1,y1;
+      int d=0;
       int risultato;
       ifstream fin("auto.txt",ios::in);
       string app;
@@ -34,16 +36,28 @@ void stampaf()
      
         for(int i=0;i<5;i++)
         {
-            fin>>vet[i].matricola>>vet[i].nome>>vet[i].x>>vet[i].y>>vet[i].x1>>vet[i].y1;
-            risultato=sqrt(pow(vet[i].x1 - vet[i].x, 2)+pow(vet[i].y1 -vet[i].y, 2));
+            fin>>vet[i].matricola>>vet[i].nome;
+            for(int j=0;j<30;j++)
+            {
+                fin>>vet[i].x[j]>>vet[i].y[j];
+                risultato=sqrt(pow(x1 - vet[i].x[j], 2)+pow(y1 -vet[i].y[j], 2));
+                d=d+risultato;
+            }
+            vet[i].distanza=d;
+            d=0;
             
             
+        }
         
     }
     fin.close();
+    for(int i=0; i<5;i++)
+    {
+        cout<<endl<<vet[i].distanza;
+    }
     
 }
-}
+
 
 
 
@@ -68,6 +82,7 @@ int main()
             break;
             
             case 2:
+            caricamentoVet(vet);
             
             break;
             
