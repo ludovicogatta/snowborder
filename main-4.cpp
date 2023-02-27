@@ -54,31 +54,29 @@ void stampaf()
         
     }
     fin.close();
-    for(int i=0; i<5;i++)
-    {
-        cout<<endl<<vet[i].distanza;
-    }
-    
+   
 }
 
-void ordinamento(snow vet[],pod[])
+void ordinamento(snow vet[],snow pod[])
 {
+    ;
     for(int j=0;j<3;j++)
     {
         for(int i=0;i<5;i++)
         {
-            if(vet[i].distanza>pod[j].distanza)
-            {
-                pod[j]=vet[i];
-            }
+            
+                if(vet[i].distanza>pod[j].distanza)
+                {
+                    pod[j]=vet[i];
+                    vet[i].distanza=1;
+                    
+                }
+            
+            
         }
+        cout<<pod[j].matricola<<" "<<pod[j].nome<<" "<<pod[j].distanza<<endl;
     }
-    
-    for(int i=0;i<3;i++)
-    {
-        cout<<pod[i];
-    }
-    
+
 }
 
 
@@ -107,6 +105,7 @@ int main()
             
             case 2:
             caricamentoVet(vet);
+            ordinamento(vet,pod);
             
             break;
             
